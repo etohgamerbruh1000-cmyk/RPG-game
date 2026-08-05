@@ -1,0 +1,28 @@
+// player.js
+// Stores player data and player-related logic
+
+export const playerState = {
+  name: "person",
+  health: 100,
+  maxHealth: 150,
+
+  attack: 15,
+  attackMult: 1,
+
+  level: 1,
+  xp: 0,
+  gold: 0,
+
+  dead: false,
+};
+
+export const enemyState = {
+
+  name: "skeleton",
+  health: 100,
+  attack: 10,
+  tier: 1,
+  xpReward: 10,
+  goldReward: 5,
+  dead: false,
+}

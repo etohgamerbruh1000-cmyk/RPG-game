@@ -1,0 +1,52 @@
+
+# RPG Game
+
+Goal for this session: (10;45-xx;xx) 
+
+Create functions and get website to work
+
+Steps:
+1. Render function
+
+
+later:
+Inventory GUI working
+
+Steps:
+1. [x] create <ul> 
+2. [x] Loop through inventory
+3. [x] create one <li> per item
+4. [?] Display item name
+5. [] display damage if exists
+
+# Goals:
+
+TODAY:
+[] Create functions reconstructed version didn't have
+
+TOMORROW:
+[] Create detailed and helpful comments
+
+NEXT WEEK:
+[] Create Git, commit and publish
+
+English logic:
+
+### ul + li system
+
+Upon startup,
+Create an ul
+For every item in inventory,
+Create a li element
+For every item in inventory * allProperties,
+change li.textContent to stoneSword.damage (example)
+Nest the ul inside li,
+Display in HTMl
+
+### Inventory system
+
+When the enemy dies:
+Loop through every item.
+If enemy tier is high enough
+Roll a random number
+If successful, add item to inventory
