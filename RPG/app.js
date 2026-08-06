@@ -11,6 +11,8 @@ import {
 import { inventory, checkLoot } from "./modules/inventory.js";
 import {renderStats} from "./modules/render.js"
 
+console.log("app loaded 07:58")
+
 const startAttackBtn = document.getElementById("startAttackBtn");
 
 const attackBtn = document.getElementById("attackBtn");
