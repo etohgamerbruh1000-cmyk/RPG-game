@@ -1,14 +1,12 @@
 // render.js
 
-import { playerState } from "./modules/player.js";
-import { enemyState, battleState } from "./modules/battle.js";
-import { inventory } from "./modules/inventory.js"
+import { playerState } from "./player.js";
+import { enemyState, battleState } from "./battle.js";
+import { inventory } from "./inventory.js";
 
 const inventoryList = document.getElementById("inventoryList");
 
 const playerHealthText = document.getElementById("playerHealthText");
-
-const enemyHealthText = document.getElementById("enemyHealthText");
 
 const enemyHealthText = document.getElementById("enemyHealthText");
 

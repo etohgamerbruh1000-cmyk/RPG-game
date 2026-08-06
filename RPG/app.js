@@ -1,8 +1,15 @@
 import { playerState } from "./modules/player.js";
 
-import { startBattle, calculateTime, attackEnemy, enemyState } from "./modules/battle.js";
+import {
+  startBattle,
+  calculateTime,
+  attackEnemy,
+  enemyState,
+  spawnEnemy,
+} from "./modules/battle.js";
 
 import { inventory, checkLoot } from "./modules/inventory.js";
+import {renderStats} from "./modules/render.js"
 
 const startAttackBtn = document.getElementById("startAttackBtn");
 
@@ -17,8 +24,11 @@ attackBtn.addEventListener("click", () => {
 
   attackEnemy();
 
- spawnEnemy()
+  spawnEnemy();
 
   console.log(playerState);
+  renderStats()
 });
 
+renderStats()
+renderLi()

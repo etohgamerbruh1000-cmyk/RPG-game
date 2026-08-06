@@ -15,14 +15,3 @@ export const playerState = {
 
   dead: false,
 };
-
-export const enemyState = {
-
-  name: "skeleton",
-  health: 100,
-  attack: 10,
-  tier: 1,
-  xpReward: 10,
-  goldReward: 5,
-  dead: false,
-}

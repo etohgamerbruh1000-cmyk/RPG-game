@@ -2,6 +2,7 @@
 // Handles enemies, combat, and timing
 
 import { playerState } from "./player.js";
+import {renderStats} from "./render.js"
 
 export let enemyState = {
   name: "Skeleton",
@@ -33,30 +34,32 @@ export let battleState = {
 
 export function startBattle() {
   battleState.isBattling = true;
-
   battleState.battleStartTimestamp = Date.now();
-
   battleState.perfectTarget = Math.floor(Math.random() * 1000) + 2000;
 }
 export function spawnEnemy() {
+  checkEnemyDeath();
+}
 
-  if (enemyState.health <= 0 ) {
+export function checkEnemyDeath() {
+  if (enemyState.health <= 0) {
     enemyState.dead = true;
+    giveEnemyRewards();
 
-    enemyState.health = enemyState.maxHealth
-
-    playerState.gold += enemyState.goldReward;
-
-    playerState.xp += enemyState.xpReward;
-  } else {
-    playerState.health -= enemyState.attack;
+    enemyState.health = enemyState.maxHealth;
   }
+  enemyState.dead = false;
+
+}
+export function giveEnemyRewards() {
+  playerState.gold += enemyState.goldReward;
+  playerState.xp += enemyState.xpReward;
+  playerState.health -= enemyState.attack;
+  renderStats()
 }
 export function calculateTime() {
   battleState.clickTimestamp = Date.now();
-
-  let difference =
-    battleState.clickTimestamp - battleState.battleStartTimestamp;
+  let difference = battleState.clickTimestamp - battleState.battleStartTimestamp;
 
   battleState.timingAccuracy = Math.abs(difference - battleState.perfectTarget);
 
@@ -72,9 +75,6 @@ export function calculateTime() {
 export function attackEnemy() {
   enemyState.health -= playerState.attack * playerState.attackMult;
 
-  enemyDefeatCheck();
+  checkEnemyDeath();
 }
 
-function enemyDefeatCheck() {
-spawnEnemy()
-}
