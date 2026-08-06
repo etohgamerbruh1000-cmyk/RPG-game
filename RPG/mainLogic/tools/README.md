@@ -6,7 +6,9 @@ Goal for this session: (10;45-xx;xx)
 Create functions and get website to work
 
 Steps:
-1. Render function
+[/] fixing functions
+[] create imports and fix broken ones
+[] fix logic and create inventory gui
 
 
 later:
@@ -50,3 +52,16 @@ Loop through every item.
 If enemy tier is high enough
 Roll a random number
 If successful, add item to inventory
+
+### Recommended RPG workflow
+Before coding:
+git status
+After finishing a feature:
+git add .
+git commit -m "Added feature name"
+git push
+Example:
+git add .
+git commit -m "Added inventory GUI"
+git push
+Small commits are easier to recover than one huge commit.
