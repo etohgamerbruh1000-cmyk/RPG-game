@@ -1,17 +1,15 @@
 import { playerState } from "./modules/player.js";
-
 import {
   startBattle,
   calculateTime,
   attackEnemy,
-  enemyState,
   spawnEnemy,
+  enemyState,
 } from "./modules/battle.js";
 
-import { inventory, checkLoot } from "./modules/inventory.js";
-import {renderStats} from "./modules/render.js"
+import {renderStats, renderLi} from "./modules/render.js"
 
-console.log("app loaded 07:58")
+console.log("app loaded 11:16")
 
 const startAttackBtn = document.getElementById("startAttackBtn");
 
@@ -21,16 +19,18 @@ startAttackBtn.addEventListener("click", () => {
   startBattle();
 });
 
+// 
 attackBtn.addEventListener("click", () => {
   calculateTime();
 
   attackEnemy();
-
+  if (enemyState.health <= 0) {
   spawnEnemy();
-
+}
   console.log(playerState);
   renderStats()
 });
 
 renderStats()
+//? fix glitch 
 renderLi()

@@ -6,7 +6,7 @@ export const playerState = {
   health: 100,
   maxHealth: 150,
 
-  attack: 15,
+  attack: 2000,
   attackMult: 1,
 
   level: 1,

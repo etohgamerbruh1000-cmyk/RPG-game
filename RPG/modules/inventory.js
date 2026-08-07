@@ -1,6 +1,9 @@
 // inventory.js
 // Handles items, drops, and inventory
 
+import { renderLi } from "./render.js"
+import { enemyState } from "./battle.js"
+
 export let inventory = [
   {
     name: "Wooden Sword",
@@ -48,6 +51,8 @@ function rollChance(item) {
 function canDrop(item, enemyTier) {
   if (enemyTier >= item.tier) {
     rollChance(item);
+    renderLi()
+    console.log(allItems)
   }
 }
 
@@ -55,6 +60,6 @@ export function checkLoot(enemyTier) {
   for (let i = 0; i < allItems.length; i++) {
     let item = allItems[i];
 
-    canDrop(item, enemyTier);
+    canDrop(item, enemyState.tier);
   }
 }

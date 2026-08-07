@@ -1,15 +1,23 @@
 
 # RPG Game
 
-Goal for this session: (10;45-xx;xx) 
+Goal for this session: (18:46-xx;xx) 
 
-Create functions and get website to work
+calling spawnEnemy twice
 
 Steps:
-[/] fixing functions
-[] create imports and fix broken ones
-[] fix logic and create inventory gui
+[] fix
 
+
+## Debugging notes
+
+Enemy HP was resetting after attacks.
+
+Cause:
+checkEnemyDeath() was called after every attack and always reset enemy HP after death.
+
+Lesson:
+When debugging changing values, check not only direct assignments but also functions that are called afterward.
 
 later:
 Inventory GUI working
@@ -18,16 +26,16 @@ Steps:
 1. [x] create <ul> 
 2. [x] Loop through inventory
 3. [x] create one <li> per item
-4. [?] Display item name
+4. [/] Display item name
 5. [] display damage if exists
 
 # Goals:
 
 TODAY:
-[] Create functions reconstructed version didn't have
+[x] Create functions reconstructed version didn't have
 
 TOMORROW:
-[] Create detailed and helpful comments
+[x] Create detailed and helpful comments
 
 NEXT WEEK:
 [] Create Git, commit and publish

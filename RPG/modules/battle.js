@@ -2,7 +2,8 @@
 // Handles enemies, combat, and timing
 
 import { playerState } from "./player.js";
-import {renderStats} from "./render.js"
+import { renderStats } from "./render.js"
+import { checkLoot } from "./inventory.js"
 
 export let enemyState = {
   name: "Skeleton",
@@ -38,17 +39,22 @@ export function startBattle() {
   battleState.perfectTarget = Math.floor(Math.random() * 1000) + 2000;
 }
 export function spawnEnemy() {
-  checkEnemyDeath();
+
+
+enemyState.health = enemyState.maxHealth
+
+renderStats()
+checkLoot(enemyState.tier)
+enemyState.dead = false
 }
 
 export function checkEnemyDeath() {
   if (enemyState.health <= 0) {
-    enemyState.dead = true;
-    giveEnemyRewards();
 
-    enemyState.health = enemyState.maxHealth;
+    giveEnemyRewards();
+    enemyState.dead = true
   }
-  enemyState.dead = false;
+
 
 }
 export function giveEnemyRewards() {
@@ -73,8 +79,10 @@ export function calculateTime() {
 }
 
 export function attackEnemy() {
+  console.log("before:", enemyState.health)
   enemyState.health -= playerState.attack * playerState.attackMult;
-
+  console.log("after:", enemyState.health)
+renderStats()
   checkEnemyDeath();
 }
 
