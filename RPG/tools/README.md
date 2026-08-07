@@ -3,10 +3,11 @@
 
 Goal for this session: (18:46-xx;xx) 
 
-calling spawnEnemy twice
+Make inventory change state
 
 Steps:
-[] fix
+1. [/] Create new object property
+2. []... 
 
 
 ## Debugging notes
