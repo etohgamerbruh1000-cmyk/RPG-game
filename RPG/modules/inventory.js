@@ -1,71 +1,63 @@
 // inventory.js
 // Handles items, drops, and inventory
+// allItems contains every possible item.
+//It is seperate from inventory because the player does not own all items.
 
-import { renderLi } from "./render.js";
+import { renderLi, renderStats } from "./render.js";
 import { enemyState } from "./battle.js";
 
 export let inventory = [
   {
     name: "Wooden Sword",
-    damage: 1,
+    damage: 0.2,
     type: "weapon",
-    found: true,
   },
   {
     name: "Cardboard Shield",
-    defense: 1.1,
+    defense: 0.1,
     type: "defense",
-    found: true,
   },
 ];
 
 export let equippedItems = {
-
-weapon: null,
-defense: null,
-consumable: null,
-}
+  weapon: null,
+  defense: null,
+  consumable: null,
+};
 
 export let allItems = [
   {
     name: "Iron Sword",
-    damage: 1.5,
+    damage: 0.5,
     tier: 1,
     chance: 25,
     rarity: 1,
     type: "weapon",
-    found: false,
   },
 
   {
     name: "Cardboard Armor",
     tier: 1,
     type: "defense",
-    defense: 1.3,
+    defense: 0.3,
     chance: 10,
     rarity: 2,
-    found: false,
   },
 ];
 
 export function addItem(item) {
-  for (let i = 0; i < inventory.length; i++) {
-    if (inventory[i].name === item.name) {
-      
-      return;
-    } else item.found = true;
-  }
+const alreadyOwned = inventory.some((invItem) => invItem.name === item.name)
 
-  if (item.found === true) {
-    console.log("BEFORE PUSH:", inventory)
-    inventory.push(item);
-      console.log("AFTER PUSH:", inventory)
+if (alreadyOwned) {
+
+  return;
+}
+inventory.push(item);
     item.found = true;
     renderLi();
-    console.log("AFTER RENDER")
     console.log("Dropped:", item.name);
   }
-}
+
 
 function rollChance(item) {
   // Rolls numbers, chooses which item to add
@@ -96,6 +88,9 @@ export function checkLoot(enemyTier) {
   }
 }
 export function equipItem(item) {
-
-  equippedItems
+  console.log(item.name);
+  //
+  equippedItems[item.type] = item;
+  console.log(equippedItems);
+  renderStats();
 }

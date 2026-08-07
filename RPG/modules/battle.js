@@ -1,9 +1,10 @@
 // battle.js
 // Handles enemies, combat, and timing
+// Rewarding the player, 
 
 import { playerState } from "./player.js";
 import { renderStats } from "./render.js"
-import { checkLoot } from "./inventory.js"
+import { checkLoot, equippedItems } from "./inventory.js"
 
 export let enemyState = {
   name: "Skeleton",
@@ -60,10 +61,12 @@ export function checkEnemyDeath() {
 export function giveEnemyRewards() {
   playerState.gold += enemyState.goldReward;
   playerState.xp += enemyState.xpReward;
-  playerState.health -= enemyState.attack;
   renderStats()
 }
 export function calculateTime() {
+
+//player damage changes depending on the target window
+
   battleState.clickTimestamp = Date.now();
   let difference = battleState.clickTimestamp - battleState.battleStartTimestamp;
 
@@ -79,10 +82,12 @@ export function calculateTime() {
 }
 
 export function attackEnemy() {
-  console.log("before:", enemyState.health)
-  enemyState.health -= playerState.attack * playerState.attackMult;
-  console.log("after:", enemyState.health)
+  enemyState.health -= playerState.attack * playerState.attackMult * (1 + equippedItems.weapon.damage)
 renderStats()
   checkEnemyDeath();
 }
+export function playerHit() {
 
+  playerState.health -= Math.round(enemyState.attack / (1 + equippedItems.defense.defense))
+  renderStats()
+}

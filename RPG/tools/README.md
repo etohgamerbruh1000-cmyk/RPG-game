@@ -3,11 +3,11 @@
 
 Goal for this session: (18:46-xx;xx) 
 
-Make inventory change state
+Make consumables work
 
 Steps:
-1. [/] Create new object property
-2. []... 
+1. [x] C
+2. [] 
 
 
 ## Debugging notes
