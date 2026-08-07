@@ -5,6 +5,7 @@
 
 import { renderLi, renderStats } from "./render.js";
 import { enemyState } from "./battle.js";
+import { playerState } from "./player.js"
 
 export let inventory = [
   {
@@ -42,6 +43,22 @@ export let allItems = [
     defense: 0.3,
     chance: 10,
     rarity: 2,
+  },
+  {
+name: "Healing potion",
+tier: 1, 
+heal: 30,
+chance: 40,
+rarity: 1,
+type: "consumable"
+  },
+    {
+name: "Rejuvenation Potion",
+tier: 1, 
+heal: 100,
+chance: 7,
+rarity: 1,
+type: "consumable"
   },
 ];
 
@@ -93,4 +110,17 @@ export function equipItem(item) {
   equippedItems[item.type] = item;
   console.log(equippedItems);
   renderStats();
+}
+
+export function useItem(equippedItem) {
+
+// heals the player, make this better later like dynamic type :)
+
+  playerState.health += equippedItems.consumable.heal
+  if (playerState.health >= playerState.maxHealth) {
+
+    playerState.health = playerState.maxHealth
+  }
+  console.log("Item:", equippedItem)
+  renderStats()
 }

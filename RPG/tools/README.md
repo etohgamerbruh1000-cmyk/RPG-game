@@ -6,8 +6,8 @@ Goal for this session: (18:46-xx;xx)
 Make consumables work
 
 Steps:
-1. [x] C
-2. [] 
+1. [x] Create new property "heal"
+2. [] create useItem()
 
 
 ## Debugging notes
