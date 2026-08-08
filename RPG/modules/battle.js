@@ -2,7 +2,7 @@
 // Handles enemies, combat, and timing
 // Rewarding the player, 
 
-import { playerState } from "./player.js";
+import { playerState, calculateLevel, checkDefeatPlayer } from "./player.js";
 import { renderStats } from "./render.js"
 import { checkLoot, equippedItems } from "./inventory.js"
 
@@ -16,7 +16,7 @@ export let enemyState = {
 
   tier: 1,
 
-  xpReward: 10,
+  xpReward: 30,
   goldReward: 5,
 
   dead: false,
@@ -53,6 +53,8 @@ export function checkEnemyDeath() {
   if (enemyState.health <= 0) {
 
     giveEnemyRewards();
+    playerState.level = calculateLevel(playerState.xp)
+
     enemyState.dead = true
   }
 
@@ -82,12 +84,16 @@ export function calculateTime() {
 }
 
 export function attackEnemy() {
-  enemyState.health -= playerState.attack * playerState.attackMult * (1 + equippedItems.weapon.damage)
+  enemyState.health -= playerState.attack * playerState.attackMult * (1 + equippedItems.weapon.damage) * (1 + playerState.levelStatIncrease)
 renderStats()
   checkEnemyDeath();
+
 }
 export function playerHit() {
 
   playerState.health -= Math.round(enemyState.attack / (1 + equippedItems.defense.defense))
+  checkDefeatPlayer()
   renderStats()
 }
+
+

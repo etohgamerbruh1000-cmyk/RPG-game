@@ -97,11 +97,12 @@ function canDrop(item, enemyTier) {
 // recursive function, calls one after another
 // * Discovery: parameters are just labels;
 // * what is being called does not have to be the parameter
+
 export function checkLoot(enemyTier) {
   for (let i = 0; i < allItems.length; i++) {
     let item = allItems[i];
 
-    canDrop(item, enemyState.tier);
+    canDrop(item, enemyTier);
   }
 }
 export function equipItem(item) {
@@ -112,11 +113,12 @@ export function equipItem(item) {
   renderStats();
 }
 
+
 export function useItem(equippedItem) {
 
 // heals the player, make this better later like dynamic type :)
 
-  playerState.health += equippedItems.consumable.heal
+  playerState.health += equippedItem.heal
   if (playerState.health >= playerState.maxHealth) {
 
     playerState.health = playerState.maxHealth

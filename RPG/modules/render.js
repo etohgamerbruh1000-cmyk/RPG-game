@@ -17,6 +17,8 @@ const xpCounter = document.getElementById("xpCounter");
 
 const timingResult = document.getElementById("timingResult");
 
+const levelCounter = document.getElementById("levelCounter");
+
 const battleStatus = document.getElementById("battleStatus");
 const equippedWeaponText = document.getElementById("equippedWeaponText");
 const equippedDefenseText = document.getElementById("equippedDefenseText");
@@ -29,17 +31,14 @@ export function renderStats() {
   enemyHealthText.textContent = `Enemy health: ${enemyState.health}`;
   goldCounter.textContent = `Gold: ${playerState.gold}`;
   xpCounter.textContent = `XP: ${playerState.xp}`;
+  levelCounter.textContent = `Level: ${playerState.level}`
   timingResult.textContent = `Result: You clicked in ${battleState.timingAccuracy} ms!`;
   battleStatus.textContent = `Battling?: ${battleState.isBattling}`;
-  console.log(inventory);
-  console.log(equippedItems);
-  console.log(equippedItems.weapon);
+
+ 
   renderEquippedItems();
 }
 export function renderEquippedItems() {
-  console.log("weapon:", equippedWeaponText)
-  console.log("defense:", equippedDefenseText)
-  console.log("consumable:", equippedConsumableText)
 
   if (equippedItems.weapon !== null) {
     equippedWeaponText.textContent = `Equipped weapon: ${equippedItems.weapon.name}`;

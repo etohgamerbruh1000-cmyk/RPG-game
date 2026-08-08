@@ -24,6 +24,7 @@ startAttackBtn.addEventListener("click", () => {
 
 //
 attackBtn.addEventListener("click", () => {
+  if (playerState.dead === false) {
   calculateTime();
 
   attackEnemy();
@@ -34,10 +35,11 @@ attackBtn.addEventListener("click", () => {
   }
   console.log(playerState);
   renderStats();
-});
+}});
 
 renderStats();
 //? fix glitch
 renderLi();
-equipItem(inventory[0])
-equipItem(inventory[1])
+
+equipItem(inventory.find(i => i.type === "weapon"))
+equipItem(inventory.find(i => i.type === "defense"))
